@@ -1,0 +1,8 @@
+Play Prediction:
+First, my model goes through the entire pairs_Played.csv. For each user game pair, it checks if it is in the top 66% of games. It also checks the Jaccard Similarity between the user and the game. For each user, it then sorts each game, first by if the game was popular and then by the average Jaccard Score of the game. Because the test data is split 50-50 with games played and games not played, if a game is ranked top 50% of games for a user, my model predicts that the user played the game. Otherwise, it predicts that the user did not play the game.
+
+Time Played Prediction:
+
+My model is a latent factor model that uses the alpha, betaU, and betaI from HW3. I use TensorFlow with one factor to generate gammaU and gammaI. For some reason, the predict function from TF does not work well, so I only use the gamma variables that it generates. I then make predictions using alpha + betaU + betaI + gammaU*gammaI
+
+I also have code commented out that attempts BPR and collaborative filtering, but neither of these worked well. 
